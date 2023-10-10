@@ -19,3 +19,6 @@ while True :
         print("Value Error!! ... ")
     except TypeError:
         print("Type Error !! ...")
+    except KeyboardInterrupt : 
+        print("Exiting .....!")
+        exit()
