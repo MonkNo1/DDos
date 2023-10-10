@@ -18,7 +18,7 @@ def get_publicIp():
     data = response.json()
     return data['ip']
 
-s = socket.socket()
+s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 port = int(input("Enter the port no to host a Server : "))
 Target = input("Enter the Ip to DDos : ")
 
