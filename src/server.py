@@ -51,7 +51,11 @@ while True:
             c.send("Exiting......!".encode())
             logit(addr=addr,threadCount=thread,messg="Exited")
             s.close()
-    except:
-        pass
-    
+    except ValueError:
+        print("Value Error !!")
+        s.close()
+    except KeyboardInterrupt:
+        s.close()
+        print("Breaking .....!")
+        break
     
