@@ -18,6 +18,10 @@ def get_publicIp():
     data = response.json()
     return data['ip']
 
+def get_localIp():
+    hostname = socket.gethostname()
+    return (socket.gethostbyname(hostname))
+
 def start_party():
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     port = int(input("Enter the port no to host a Server : "))
@@ -32,7 +36,8 @@ def start_party():
         
     s.bind(('',port))
     s.listen(30)     
-    print (f"socket is listening at {get_publicIp}")         
+    print (f"Socket is listening at {get_publicIp}")         
+    print(f"For Local Connection use {get_localIp}")
     print("connect the server using the same tool and commands will be Given there !!!")
 
 
