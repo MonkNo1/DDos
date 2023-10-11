@@ -22,3 +22,6 @@ while True :
     except KeyboardInterrupt : 
         print("Exiting .....!")
         exit()
+
+
+# has some exception errors !!!!

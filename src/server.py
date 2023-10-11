@@ -42,17 +42,17 @@ def start_party():
 
 
     while True:
-        c,addr   = s.accept()
-        print(f"Got connection form {addr}!!")
-        c.send("Enter the Thread Count For the attack 5-30 [default=10]: ".encode())
         try:
+            c,addr   = s.accept()
+            print(f"Got connection form {addr}!!")
+            c.send("Enter the Thread Count For the attack 5-30 [default=10]: ".encode())
             thread = int(c.recv(1024).decode())
             logit(addr=addr,threadCount=thread,messg="Connected")
             c.send("The attack will be Started Press [ S ] to Continue  : ".encode())
             confo = c.recv(1024).decode()
             if(confo == 's' or confo == 'S'):
                 c.send("Started").encode()
-                c.send(str(Target+":"+port).encode())
+                c.send(str(Target+":"+tPort).encode())
                 logit(addr=addr,threadCount=thread,messg="Started")
             else:
                 c.send("ITs Not Starting ....".encode())
@@ -66,4 +66,6 @@ def start_party():
             s.close()
             print("Breaking .....!")
             break
+        except ConnectionResetError:
+            pass
         
